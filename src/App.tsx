@@ -1,9 +1,9 @@
-import { AlertCircle, Github } from "lucide-react"
-import { SearchBar } from "./components/searchBar"
 import { useMemo, useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { SearchBar } from "./components/searchBar"
 import { UserList } from "./components/userList";
 import { useGitHubUsers, useSearchGitHubUsers } from "./hooks/useGithubUsers";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AlertCircle, Github } from "lucide-react"
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,7 +33,6 @@ function AppContent() {
 
   const displayUsers = useMemo(() => {
     if (searchQuery.trim()) {
-      console.log('Search Data:', searchData);
       return searchData?.items || [];
     }
     return usersData?.pages.flatMap((page) => page) || [];

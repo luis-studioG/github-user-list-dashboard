@@ -1,7 +1,8 @@
-import { ExternalLink, User as UserIcon } from 'lucide-react';
+import type { GitHubUser } from '../types/github';
+import { User as UserIcon } from 'lucide-react';
 
 interface UserCardProps {
-  user: any;
+  user: GitHubUser;
 }
 
 export const UserCard = ({ user }: UserCardProps) => {
@@ -19,10 +20,9 @@ export const UserCard = ({ user }: UserCardProps) => {
 
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <h3 className="text-lg font-semibold text-gray-900 truncate group-hover:text-blue-600 transition-colors">
+            <h3 className="text-lg font-semibold text-gray-900 truncate">
               {user.login}
             </h3>
-            <ExternalLink className="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0" />
           </div>
           <div className="flex items-center gap-1.5 text-sm text-gray-500 mt-1">
             <UserIcon className="w-3.5 h-3.5" />

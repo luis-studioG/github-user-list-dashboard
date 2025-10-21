@@ -1,16 +1,18 @@
 import { useCallback, useEffect, useRef } from 'react';
 import { UserCard } from './userCard';
+import type { GitHubUser } from '../types/github';
 import { Loader2 } from 'lucide-react';
 
+
 interface UserListProps {
-  users?: any | any[];
+  users: GitHubUser[];
   onLoadMore?: () => void;
   hasNextPage?: boolean;
   isFetchingNextPage?: boolean;
 }
 
 export const UserList = ({
-  users = [],
+  users,
   onLoadMore,
   hasNextPage,
   isFetchingNextPage,
@@ -57,7 +59,7 @@ export const UserList = ({
   return (
     <div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {users.map((user: any) => (
+        {users.map((user: GitHubUser) => (
           <UserCard key={user.id} user={user} />
         ))}
       </div>
