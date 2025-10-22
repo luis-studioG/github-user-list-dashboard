@@ -9,11 +9,12 @@ interface SearchBarProps {
 
 export const SearchBar = ({ value, onChange, onClear }: SearchBarProps) => {
   const [localValue, setLocalValue] = useState(value);
+  const DEBOUNCE_TIME = 300;
 
   useEffect(() => {
     const timer = setTimeout(() => {
       onChange(localValue);
-    }, 300);
+    }, DEBOUNCE_TIME);
 
     return () => clearTimeout(timer);
   }, [localValue, onChange]);

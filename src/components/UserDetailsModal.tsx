@@ -19,6 +19,8 @@ export const UserDetailsModal = ({ username, onClose }: UserDetailsModalProps) =
       <div
         className="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
       >
         <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
           <h2 className="text-2xl font-bold text-gray-900">User Details</h2>
@@ -69,6 +71,33 @@ export const UserDetailsModal = ({ username, onClose }: UserDetailsModalProps) =
                     <p className="text-gray-700 mt-3">{user.bio}</p>
                   )}
                 </div>
+              </div>
+
+
+              <div className="grid grid-cols-3 gap-4">
+                <div className="bg-gray-50 rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-gray-900">{user.public_repos}</div>
+                  <div className="text-sm text-gray-600 mt-1">Repositories</div>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-gray-900">{user.followers}</div>
+                  <div className="text-sm text-gray-600 mt-1">Followers</div>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-4 text-center">
+                  <div className="text-2xl font-bold text-gray-900">{user.following}</div>
+                  <div className="text-sm text-gray-600 mt-1">Following</div>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-gray-200">
+                <a
+                  href={user.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-full bg-gray-900 text-white text-center py-3 px-4 rounded-lg hover:bg-gray-800 transition-colors font-medium"
+                >
+                  View on GitHub
+                </a>
               </div>
             </div>
           )}

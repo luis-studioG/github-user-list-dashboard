@@ -50,17 +50,18 @@ npm run dev
 
 ```
 src/
-├── components/          # React components
-│   ├── SearchBar.tsx   # Debounced search input
-│   ├── UserCard.tsx    # User card component
-│   ├── UserList.tsx    # List with infinite scroll
-├── hooks/              # Custom React hooks
-│   └── useGitHubUsers.ts    # TanStack Query hooks
-├── services/           # API services
-│   └── github.ts       # GitHub API integration
-├── App.tsx             # Main application component
-├── main.tsx            # Application entry point
-└── index.css           # Global styles
+├── components/                # React components
+│   ├── SearchBar.tsx          # Debounced search input
+│   ├── UserCard.tsx           # User card component
+│   ├── UserList.tsx           # List with infinite scroll
+│   ├── UserDetailsModal.tsx   # Modal with user details
+├── hooks/                     # Custom React hooks
+│   └── useGitHubUsers.ts      # TanStack Query hooks
+├── services/                  # API services
+│   └── github.ts              # GitHub API integration
+├── App.tsx                    # Main application component
+├── main.tsx                   # Application entry point
+└── index.css                  # Global styles
 ```
 
 ## Key Features Explained

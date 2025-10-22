@@ -1,6 +1,8 @@
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import { fetchGitHubUserDetails, fetchGitHubUsers, searchGitHubUsers } from '../services/github';
 
+const NETWORK_STALE_TIME = 1000 * 60 * 5;
+
 export const useGitHubUsers = () => {
   return useInfiniteQuery({
     queryKey: ['github-users'],
@@ -10,7 +12,7 @@ export const useGitHubUsers = () => {
       return lastPage[lastPage.length - 1].id;
     },
     initialPageParam: 0,
-    staleTime: 5 * 60 * 1000,
+    staleTime: NETWORK_STALE_TIME,
   });
 };
 
@@ -19,7 +21,7 @@ export const useSearchGitHubUsers = (query: string, page: number = 1) => {
     queryKey: ['github-users-search', query, page],
     queryFn: () => searchGitHubUsers(query, page),
     enabled: query.trim().length > 0,
-    staleTime: 5 * 60 * 1000,
+    staleTime: NETWORK_STALE_TIME,
   });
 };
 
@@ -28,6 +30,6 @@ export const useGitHubUserDetails = (username: string | null) => {
     queryKey: ['github-user', username],
     queryFn: () => fetchGitHubUserDetails(username!),
     enabled: !!username,
-    staleTime: 10 * 60 * 1000,
+    staleTime: NETWORK_STALE_TIME,
   });
 };
