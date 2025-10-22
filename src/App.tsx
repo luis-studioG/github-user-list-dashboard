@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { SearchBar } from "./components/searchBar"
-import { UserList } from "./components/userList";
+import { SearchBar } from "./components/SearchBar"
+import { UserList } from "./components/UserList";
 import { useGitHubUsers, useSearchGitHubUsers } from "./hooks/useGithubUsers";
 import { AlertCircle, Github } from "lucide-react"
 

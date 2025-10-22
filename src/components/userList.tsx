@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { UserCard } from './userCard';
+import { UserCard } from './UserCard';
 import type { GitHubUser } from '../types/github';
 import { Loader2 } from 'lucide-react';
 
