@@ -1,4 +1,4 @@
-import type { GitHubUser } from "../types/github";
+import type { GitHubUser, GitHubUserDetails } from "../types/github";
 
 const USERS_PER_PAGE = 40;
 const baseURL = import.meta.env.VITE_GITHUB_API_BASE;
@@ -26,6 +26,16 @@ export const searchGitHubUsers = async (query: string, page: number = 1): Promis
 
   if (!response.ok) {
     throw new Error(`Failed to search users: ${response.statusText}`);
+  }
+
+  return response.json();
+};
+
+export const fetchGitHubUserDetails = async (username: string): Promise<GitHubUserDetails> => {
+  const response = await fetch(`${baseURL}/users/${username}`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch user details: ${response.statusText}`);
   }
 
   return response.json();

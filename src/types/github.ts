@@ -18,3 +18,13 @@ export interface GitHubUser {
   type: string;
   site_admin: boolean;
 }
+
+export interface GitHubUserDetails extends GitHubUser {
+  name: string | null;
+  company: string | null;
+  bio: string | null;
+  blog: string | null;
+  public_repos: number;
+  followers: number;
+  following: number;
+}
