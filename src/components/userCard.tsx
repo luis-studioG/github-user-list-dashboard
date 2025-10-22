@@ -3,11 +3,12 @@ import { User as UserIcon } from 'lucide-react';
 
 interface UserCardProps {
   user: GitHubUser;
+  onClick?: () => void;
 }
 
-export const UserCard = ({ user }: UserCardProps) => {
+export const UserCard = ({ user, onClick }: UserCardProps) => {
   return (
-    <div className="bg-white rounded-lg shadow-sm p-4 border border-gray-100 group">
+    <div onClick={onClick} className="bg-white rounded-lg shadow-sm p-4 border border-gray-100 group hover:shadow-md transition-all duration-200 cursor-pointer">
       <div className="flex items-center gap-4">
         <div className="relative flex-shrink-0">
           <img
@@ -20,7 +21,7 @@ export const UserCard = ({ user }: UserCardProps) => {
 
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <h3 className="text-lg font-semibold text-gray-900 truncate">
+            <h3 className="text-lg font-semibold text-gray-900 truncate hover:text-blue-600">
               {user.login}
             </h3>
           </div>

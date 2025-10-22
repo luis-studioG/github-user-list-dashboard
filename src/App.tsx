@@ -4,6 +4,7 @@ import { SearchBar } from "./components/SearchBar"
 import { UserList } from "./components/UserList";
 import { useGitHubUsers, useSearchGitHubUsers } from "./hooks/useGithubUsers";
 import { AlertCircle, Github } from "lucide-react"
+import { UserDetailsModal } from "./components/UserDetailsModal";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,6 +17,7 @@ const queryClient = new QueryClient({
 
 function AppContent() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedUsername, setSelectedUsername] = useState<string | null>(null);
 
   const { 
     data: usersData,   
@@ -106,6 +108,7 @@ function AppContent() {
                 onLoadMore={showLoadMore ? fetchNextPage : undefined}
                 hasNextPage={hasNextPage}
                 isFetchingNextPage={isFetchingNextPage}
+                onUserClick={setSelectedUsername}
               />
             </>
           )}
@@ -120,6 +123,8 @@ function AppContent() {
             </div>
           )}
         </main>
+
+        <UserDetailsModal username={selectedUsername} onClose={() => setSelectedUsername(null)} />
       </div>
   )
 }
